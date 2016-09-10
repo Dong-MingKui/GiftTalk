@@ -6,60 +6,66 @@
 
 
     <FrameLayout
+        android:id="@+id/main_frame"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/activity_zero_margin"
         android:layout_weight="1" />
 
     <RadioGroup
+        android:id="@+id/main_rg"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
 
         <RadioButton
-            android:layout_width="0dp"
+            android:id="@+id/main_home"
+            android:layout_width="@dimen/activity_zero_margin"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/activity_small_margin"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/home_main_bg"
             android:gravity="center"
-            android:text="首页"
-            android:textColor="#A89A9A" />
+            android:text="@string/main_home_name"
+            android:textColor="@drawable/text_main_bg" />
 
 
         <RadioButton
-            android:layout_width="0dp"
+            android:id="@+id/main_gift"
+            android:layout_width="@dimen/activity_zero_margin"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/activity_small_margin"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/gift_main_bg"
             android:gravity="center"
-            android:text="榜单"
-            android:textColor="#A89A9A" />
+            android:text="@string/main_gift_name"
+            android:textColor="@drawable/text_main_bg" />
 
         <RadioButton
-            android:layout_width="0dp"
+            android:id="@+id/main_category"
+            android:layout_width="@dimen/activity_zero_margin"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/activity_small_margin"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/category_main_bg"
             android:gravity="center"
-            android:text="分类"
-            android:textColor="#A89A9A" />
+            android:text="@string/main_category_name"
+            android:textColor="@drawable/text_main_bg" />
 
         <RadioButton
-            android:layout_width="0dp"
+            android:id="@+id/main_profile"
+            android:layout_width="@dimen/activity_zero_margin"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/activity_small_margin"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/profile_main_bg"
             android:gravity="center"
-            android:text="我"
-            android:textColor="#A89A9A" />
+            android:text="@string/main_profile_name"
+            android:textColor="@drawable/text_main_bg" />
 
     </RadioGroup>
 </LinearLayout>

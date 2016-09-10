@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_zero_margin"
+        android:layout_weight="1"
+        android:background="@color/color_text_selected_red"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:text="@string/home_header_name"
+            android:textColor="#fff"
+            android:textSize="@dimen/activity_middle_size"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:src="@mipmap/icon_header_bg" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:src="@mipmap/btn_signin" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_zero_margin"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/home_tab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginBottom="@dimen/activity_smaller_margin"
+            android:layout_weight="10"
+            app:tabIndicatorColor="@color/color_text_selected_red"
+            app:tabSelectedTextColor="@color/color_text_selected_red" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_btn_arrow_down" />
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_vp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_zero_margin"
+        android:layout_weight="10" />
+
+</LinearLayout>

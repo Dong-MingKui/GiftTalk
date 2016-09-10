@@ -13,6 +13,7 @@ import com.dongkui.gifttalk.controller.activity.AbsBaseActivity;
 
 /**
  * Created by dllo on 16/9/9.
+ * Fragment的基类
  */
 public abstract class AbsBaseFragment extends Fragment {
     private Context context;

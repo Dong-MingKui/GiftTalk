@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!--一级界面导航字体选择颜色-->
+    <color name="color_text_selected_red">#E73544</color>
+    <color name="color_text_normal_gray">#A89A9A</color>
+    <color name="color_text_white">#fff</color>
+
+
 </resources>

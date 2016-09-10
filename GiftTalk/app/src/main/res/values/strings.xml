@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">GiftTalk</string>
+    <string name="app_name">礼物说</string>
+
+    <!--一级界面下面的导航名称-->
+    <string name="main_home_name">首页</string>
+    <string name="main_gift_name">榜首</string>
+    <string name="main_category_name">分类</string>
+    <string name="main_profile_name">我</string>
+
+    <!--主header界面名称-->
+    <string name="home_header_name">礼物说</string>
+    <string name="gift_header_name">礼物榜</string>
+
 </resources>
