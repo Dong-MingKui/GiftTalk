@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_home_list_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:background="#e6aeae"
+            android:text="数码"
+            android:textColor="@color/color_text_selected_red"
+            android:textSize="@dimen/text_more_middle_size" />
+
+        <TextView
+            android:id="@+id/item_home_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_toRightOf="@+id/item_home_list_category"
+            android:text="数码体验馆"
+            android:textSize="@dimen/text_middle_size" />
+
+        <TextView
+            android:id="@+id/item_home_list_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:text="小C" />
+
+        <ImageView
+            android:id="@+id/item_home_list_user_avatar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_toLeftOf="@id/item_home_list_nick_name"
+            android:src="@mipmap/dk_qingxin" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/item_home_list_banner_image"
+        android:layout_width="match_parent"
+        android:layout_height="375dp"
+        android:src="@mipmap/dk_qingxin" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_home_list_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:text="第159期|这些优质的礼物, 既然还在..." />
+
+        <TextView
+            android:id="@+id/item_home_list_like_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:text="1794" />
+
+        <ImageView
+            android:id="@+id/item_home_list_like_picture"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_toLeftOf="@id/item_home_list_like_count"
+            android:src="@drawable/feed_favourite_bg" />
+    </RelativeLayout>
+
+
+</LinearLayout>

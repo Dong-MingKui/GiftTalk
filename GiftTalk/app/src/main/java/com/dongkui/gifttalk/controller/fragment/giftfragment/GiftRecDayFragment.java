@@ -5,6 +5,7 @@ import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 榜首界面中的每日推荐
  */
 public class GiftRecDayFragment extends AbsBaseFragment {
     @Override

@@ -9,5 +9,7 @@
     <dimen name="activity_small_margin">5dp</dimen>
     <dimen name="activity_middle_margin">10dp</dimen>
     <!--字体大小-->
-    <dimen name="activity_middle_size">15sp</dimen>
+    <dimen name="text_small_size">5sp</dimen>
+    <dimen name="text_more_middle_size">10sp</dimen>
+    <dimen name="text_middle_size">15sp</dimen>
 </resources>

@@ -36,7 +36,7 @@ public class VolleyInstance {
      *              *2.懒汉(线程安全) 使用了synchronized,不过效率低99%的情况下不需要同步
      *              *3.饿汉 ?
      *              *4.饿汉(变种)?
-     *              *5.静态内部类/
+     *              *5.静态内部类?
      *              *6.枚举 enum?
      *              *7.双重检验锁:我们就用这个
      *
@@ -80,8 +80,8 @@ public class VolleyInstance {
 
     /***************************************************************************/
     // 对外提供方法
-    public void startRequest(String url, final onVolleyResult result) {
-        StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
+    public void startRequest(String url, final OnVolleyResult result) {
+        final StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 // 如果请求成功将返回数据存储到接口

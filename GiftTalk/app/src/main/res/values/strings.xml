@@ -8,7 +8,8 @@
     <string name="main_profile_name">我</string>
 
     <!--主header界面名称-->
-    <string name="home_header_name">礼物说</string>
-    <string name="gift_header_name">礼物榜</string>
+    <string name="home_top_name">礼物说</string>
+    <string name="gift_top_name">礼物榜</string>
+    <string name="home_top_search_name">中秋佳节送好礼</string>
 
 </resources>

@@ -3,9 +3,16 @@ package com.dongkui.gifttalk.controller.fragment.homefragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 
 import com.dongkui.gifttalk.R;
-import com.dongkui.gifttalk.controller.adapter.FragmentAdapter;
+import com.dongkui.gifttalk.controller.adapter.AllFragmentAdapter;
 import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;
@@ -16,10 +23,11 @@ import java.util.List;
  * 首页界面
  */
 public class HomeFragment extends AbsBaseFragment {
-    private FragmentAdapter adapter;
+    private AllFragmentAdapter adapter;
     private TabLayout homeTab;
     private ViewPager homeVp;
     private List<Fragment> fragments;
+    public ImageView homeMeanArrow;
 
     @Override
     protected int setLayout() {
@@ -30,12 +38,14 @@ public class HomeFragment extends AbsBaseFragment {
     protected void initView() {
         homeTab = byView(R.id.home_tab);
         homeVp = byView(R.id.home_vp);
-        adapter = new FragmentAdapter(getChildFragmentManager());
-        fragments = new ArrayList<>();
+        homeMeanArrow = byView(R.id.home_mean_arrow);
+
     }
 
     @Override
     protected void initDatas() {
+        adapter = new AllFragmentAdapter(getChildFragmentManager());
+        fragments = new ArrayList<>();
         for (int i = 0; i < 13; i++) {
             fragments.add(new HomeSelectionFragment());
         }
@@ -48,5 +58,34 @@ public class HomeFragment extends AbsBaseFragment {
         for (int i = 0; i < 13; i++) {
             homeTab.getTabAt(i).setText(headers[i]);
         }
+
+        homeMeanArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RotateAnimation anim = new RotateAnimation(0,180, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+                anim.setDuration(100);
+                anim.setFillAfter(true);
+                homeMeanArrow.clearAnimation();
+                homeMeanArrow.setAnimation(anim);
+                popWindowShow();
+
+            }
+        });
+
     }
+
+
+    private void popWindowShow() {
+
+        PopupWindow window = new PopupWindow(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_home_top_mean_pw,null);
+        window.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setContentView(view);
+        window.setFocusable(true);
+        window.setOutsideTouchable(true);
+        window.showAsDropDown(homeTab);
+    }
+
+
 }

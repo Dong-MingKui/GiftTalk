@@ -9,7 +9,9 @@ import com.dongkui.gifttalk.controller.fragment.giftfragment.GiftFragment;
 import com.dongkui.gifttalk.controller.fragment.homefragment.HomeFragment;
 import com.dongkui.gifttalk.controller.fragment.ProfileFragment;
 
-
+/**
+ *  构成大体框架的Activity
+ */
 public class MainActivity extends AbsBaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup mainRg;

@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.dongkui.gifttalk.R;
-import com.dongkui.gifttalk.controller.adapter.FragmentAdapter;
+import com.dongkui.gifttalk.controller.adapter.AllFragmentAdapter;
 import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
 public class GiftFragment extends AbsBaseFragment {
     private TabLayout giftTab;
     private ViewPager giftVp;
-    private FragmentAdapter adapter;
+    private AllFragmentAdapter adapter;
     private List<Fragment> fragments;
 
     @Override
@@ -30,7 +30,7 @@ public class GiftFragment extends AbsBaseFragment {
     protected void initView() {
         giftTab = byView(R.id.gift_tab);
         giftVp = byView(R.id.gift_vp);
-        adapter = new FragmentAdapter(getChildFragmentManager());
+        adapter = new AllFragmentAdapter(getChildFragmentManager());
         fragments = new ArrayList<>();
 
     }

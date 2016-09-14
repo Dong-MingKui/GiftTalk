@@ -28,7 +28,8 @@
             android:drawableTop="@drawable/home_main_bg"
             android:gravity="center"
             android:text="@string/main_home_name"
-            android:textColor="@drawable/text_main_bg" />
+            android:textColor="@drawable/text_main_bg"
+            android:textSize="@dimen/text_more_middle_size" />
 
 
         <RadioButton
@@ -41,7 +42,8 @@
             android:drawableTop="@drawable/gift_main_bg"
             android:gravity="center"
             android:text="@string/main_gift_name"
-            android:textColor="@drawable/text_main_bg" />
+            android:textColor="@drawable/text_main_bg"
+            android:textSize="@dimen/text_more_middle_size" />
 
         <RadioButton
             android:id="@+id/main_category"
@@ -53,7 +55,8 @@
             android:drawableTop="@drawable/category_main_bg"
             android:gravity="center"
             android:text="@string/main_category_name"
-            android:textColor="@drawable/text_main_bg" />
+            android:textColor="@drawable/text_main_bg"
+            android:textSize="@dimen/text_more_middle_size" />
 
         <RadioButton
             android:id="@+id/main_profile"
@@ -65,7 +68,8 @@
             android:drawableTop="@drawable/profile_main_bg"
             android:gravity="center"
             android:text="@string/main_profile_name"
-            android:textColor="@drawable/text_main_bg" />
+            android:textColor="@drawable/text_main_bg"
+            android:textSize="@dimen/text_more_middle_size" />
 
     </RadioGroup>
 </LinearLayout>

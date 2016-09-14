@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.dongkui.gifttalk.R;
-import com.dongkui.gifttalk.controller.adapter.FragmentAdapter;
+import com.dongkui.gifttalk.controller.adapter.AllFragmentAdapter;
 import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.List;
  * 分类界面
  */
 public class CategoryFragment extends AbsBaseFragment {
-    private FragmentAdapter adapter;
+    private AllFragmentAdapter adapter;
     private List<Fragment> fragments;
     private TabLayout categoryTab;
     private ViewPager categoryVp;
@@ -30,13 +30,13 @@ public class CategoryFragment extends AbsBaseFragment {
     protected void initView() {
         categoryTab = byView(R.id.category_tab);
         categoryVp = byView(R.id.category_vp);
-        adapter = new FragmentAdapter(getChildFragmentManager());
-        fragments = new ArrayList<>();
 
     }
 
     @Override
     protected void initDatas() {
+        adapter = new AllFragmentAdapter(getChildFragmentManager());
+        fragments = new ArrayList<>();
         fragments.add(new CategoryRaidersFragment());
         fragments.add(new CategoryRaidersFragment());
         adapter.setFragments(fragments);

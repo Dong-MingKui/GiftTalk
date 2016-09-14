@@ -5,6 +5,7 @@ import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 分类界面中的攻略界面
  */
 public class CategoryRaidersFragment extends AbsBaseFragment {
     @Override
