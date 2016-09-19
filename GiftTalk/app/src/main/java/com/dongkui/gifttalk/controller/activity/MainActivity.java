@@ -7,7 +7,7 @@ import com.dongkui.gifttalk.R;
 import com.dongkui.gifttalk.controller.fragment.categoryfragment.CategoryFragment;
 import com.dongkui.gifttalk.controller.fragment.giftfragment.GiftFragment;
 import com.dongkui.gifttalk.controller.fragment.homefragment.HomeFragment;
-import com.dongkui.gifttalk.controller.fragment.ProfileFragment;
+import com.dongkui.gifttalk.controller.fragment.profilefragment.ProfileFragment;
 
 /**
  *  构成大体框架的Activity

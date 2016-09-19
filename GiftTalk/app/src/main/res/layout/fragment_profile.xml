@@ -4,10 +4,112 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="我"/>
+    <LinearLayout
+        android:id="@+id/me_avatar_ll"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@mipmap/bg_profile"
+        android:gravity="center"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/me_avatar_boy"
+            android:gravity="center"
+            android:text="@string/profile_avatar_name"
+            android:textColor="@color/color_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_mean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_bg"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/activity_zero_margin"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_cart"
+            android:gravity="center"
+            android:text="@string/profile_mean_cart"
+            android:textSize="@dimen/text_more_middle_size" />
+
+        <TextView
+            android:layout_width="@dimen/activity_zero_margin"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_order"
+            android:gravity="center"
+            android:text="@string/profile_mean_order"
+            android:textSize="@dimen/text_more_middle_size" />
+
+        <TextView
+            android:layout_width="@dimen/activity_zero_margin"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_coupon"
+            android:gravity="center"
+            android:text="@string/profile_mean_coupon"
+            android:textSize="@dimen/text_more_middle_size" />
+
+        <TextView
+            android:layout_width="@dimen/activity_zero_margin"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_follow"
+            android:gravity="center"
+            android:text="@string/profile_mean_follow"
+            android:textSize="@dimen/text_more_middle_size" />
+
+        <TextView
+            android:layout_width="@dimen/activity_zero_margin"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_small_margin"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_service"
+            android:gravity="center"
+            android:text="@string/profile_mean_service"
+            android:textSize="@dimen/text_more_middle_size" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/profile_view1"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="#bababa" />
+
+    <View
+        android:id="@+id/profile_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_small_margin"
+        android:background="#e6e5e5" />
+
+
+    <View
+        android:id="@+id/profile_view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="#bababa" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/profile_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_bg" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/profile_vp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_bg">
+
+    </android.support.v4.view.ViewPager>
 </LinearLayout>

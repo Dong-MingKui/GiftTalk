@@ -2,9 +2,10 @@ package com.dongkui.gifttalk.controller.fragment.homefragment;
 
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.Toast;
 
 import com.dongkui.gifttalk.R;
 import com.dongkui.gifttalk.controller.adapter.ItemHomeListViewAdapter;
@@ -15,6 +16,7 @@ import com.dongkui.gifttalk.model.bean.ItemHomeRotateBean;
 import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
 import com.dongkui.gifttalk.utils.ValueTools;
+import com.dongkui.gifttalk.view.CustomListView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class HomeSelectionFragment extends AbsBaseFragment {
     private Handler handler;
     private boolean isRotate = false;
     private Runnable rotateRunnable;
-    private ListView listView;
+    private CustomListView listView;
     private List<ItemHomeListViewBean> listViewBeen;
     private ItemHomeListViewAdapter listViewAdapter;
 
@@ -69,11 +71,10 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         // 随着轮播改变小圆点
         changePoints();
 
-        listViewBeen = new ArrayList<>();
+
         listViewBeenRequest();
-        listViewAdapter = new ItemHomeListViewAdapter(context);
-        listViewAdapter.setDatas(listViewBeen);
-        listView.setAdapter(listViewAdapter);
+
+
     }
 
 
@@ -230,18 +231,28 @@ public class HomeSelectionFragment extends AbsBaseFragment {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();
-                ItemHomeListViewBean bean = gson.fromJson(resultStr,ItemHomeListViewBean.class);
-                listViewBeen.add(bean);
+                ItemHomeListViewBean bean = gson.fromJson(resultStr, ItemHomeListViewBean.class);
+
+                listViewBeen = new ArrayList<>();
+                for (int i = 0; i < bean.getData().getItems().size(); i++) {
+                    listViewBeen.add(bean);
+                }
+
+                listViewAdapter = new ItemHomeListViewAdapter(context);
+                Log.d("HomeSelectionFragment", "listViewBeen.size():" + listViewBeen.size());
+                listViewAdapter.setDatas(listViewBeen);
+                Log.d("HomeSelectionFragment", "listViewBeen:" + listViewBeen);
+                listView.setAdapter(listViewAdapter);
             }
 
             @Override
             public void failure() {
+                Toast.makeText(context, "错误", Toast.LENGTH_SHORT).show();
 
             }
         });
 
     }
-
 
 
 }

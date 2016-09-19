@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:orientation="vertical">
 
 
@@ -10,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_zero_margin"
         android:layout_weight="1"
-        android:background="@color/color_text_selected_red"
+        android:background="@color/color_text_selected"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -55,8 +57,8 @@
             android:layout_gravity="top"
             android:layout_marginBottom="@dimen/activity_smaller_margin"
             android:layout_weight="10"
-            app:tabIndicatorColor="@color/color_text_selected_red"
-            app:tabSelectedTextColor="@color/color_text_selected_red" />
+            app:tabIndicatorColor="@color/color_text_selected"
+            app:tabSelectedTextColor="@color/color_text_selected" />
 
         <ImageView
             android:id="@+id/home_mean_arrow"

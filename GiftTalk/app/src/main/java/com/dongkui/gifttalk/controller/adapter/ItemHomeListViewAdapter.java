@@ -1,6 +1,7 @@
 package com.dongkui.gifttalk.controller.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class ItemHomeListViewAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return datas == null ? 0 : datas.size();
+
     }
 
     @Override
@@ -55,13 +57,25 @@ public class ItemHomeListViewAdapter extends BaseAdapter {
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.categoryTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getCategory());
-        viewHolder.titleTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getTitle());
-        viewHolder.nickNameTv.setText(datas.get(position).getData().getItems().get(position).getAuthor().getNickname());
-        Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
-        Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getColumn().getBanner_image_url()).into(viewHolder.bannerImg);
-        viewHolder.contentTv.setText(datas.get(position).getData().getItems().get(position).getTitle());
-        viewHolder.likeCount.setText(datas.get(position).getData().getItems().get(position).getLikes_count());
+        if (datas.get(position).getData().getItems().get(position).getColumn()!=null&&datas.get(position).getData().getItems().get(position).getColumn().getCategory() !=null) {
+            viewHolder.categoryTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getCategory());
+            Log.d("ItemHomeListViewAdapter", "=" + datas.get(position).getData().getItems().get(position).getColumn().getCategory());
+            viewHolder.titleTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getTitle());
+            viewHolder.nickNameTv.setText(datas.get(position).getData().getItems().get(position).getAuthor().getNickname());
+            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
+            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getColumn().getBanner_image_url()).into(viewHolder.bannerImg);
+            viewHolder.contentTv.setText(datas.get(position).getData().getItems().get(position).getTitle());
+            viewHolder.likeCount.setText(String.valueOf(datas.get(position).getData().getItems().get(position).getLikes_count()));
+        }else{
+            viewHolder.categoryTv.setVisibility(View.GONE);
+            viewHolder.titleTv.setVisibility(View.GONE);
+            viewHolder.nickNameTv.setText(datas.get(position).getData().getItems().get(position).getAuthor().getNickname());
+            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
+//            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getColumn().getBanner_image_url()).into(viewHolder.bannerImg);
+            viewHolder.contentTv.setText(datas.get(position).getData().getItems().get(position).getTitle());
+            viewHolder.likeCount.setText(String.valueOf(datas.get(position).getData().getItems().get(position).getLikes_count()));
+        }
+
         return convertView;
     }
 

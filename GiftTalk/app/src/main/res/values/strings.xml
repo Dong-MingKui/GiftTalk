@@ -11,5 +11,14 @@
     <string name="home_top_name">礼物说</string>
     <string name="gift_top_name">礼物榜</string>
     <string name="home_top_search_name">中秋佳节送好礼</string>
+    <string name="profile_avatar_name">请登录</string>
+
+    <!--我界面的菜单名称-->
+    <string name="profile_mean_cart">购物车</string>
+    <string name="profile_mean_order">订单</string>
+    <string name="profile_mean_coupon">礼劵</string>
+    <string name="profile_mean_follow">关注</string>
+    <string name="profile_mean_service">客服</string>
+
 
 </resources>

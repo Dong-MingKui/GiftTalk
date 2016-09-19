@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="下次更新 17:00"
-                android:textColor="@color/color_text_selected_red"
+                android:textColor="@color/color_text_selected"
                 android:textSize="@dimen/text_more_middle_size"/>
 
         </LinearLayout>
@@ -119,11 +119,11 @@
             android:layout_height="1dp"
             android:background="#d4d1d1"/>
 
-        <ListView
+        <com.dongkui.gifttalk.view.CustomListView
             android:id="@+id/home_list_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
             android:divider="#bfbfbf"
             android:dividerHeight="2dp" />
 
