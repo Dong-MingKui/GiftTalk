@@ -24,100 +24,45 @@
                 android:id="@+id/home_rotate_point_container"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:gravity="center"
-                android:layout_marginBottom="@dimen/activity_small_margin"
                 android:layout_gravity="bottom|center"
+                android:layout_marginBottom="@dimen/activity_small_margin"
+                android:gravity="center"
                 android:orientation="horizontal" />
         </FrameLayout>
 
 
-        <HorizontalScrollView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@mipmap/dk_qingxin" />
-            </LinearLayout>
-
-        </HorizontalScrollView>
+            android:layout_height="90dp"
+             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="@dimen/activity_small_margin"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_smaller_margin"
-                android:text="-- 9月14日 星期三 --"/>
+                android:text="-- 9月14日 星期三 --" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="下次更新 17:00"
                 android:textColor="@color/color_text_selected"
-                android:textSize="@dimen/text_more_middle_size"/>
+                android:textSize="@dimen/text_more_middle_size" />
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#d4d1d1"/>
+            android:background="#d4d1d1" />
 
         <com.dongkui.gifttalk.view.CustomListView
             android:id="@+id/home_list_view"

@@ -2,6 +2,8 @@ package com.dongkui.gifttalk.controller.fragment.homefragment;
 
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -9,9 +11,11 @@ import android.widget.Toast;
 
 import com.dongkui.gifttalk.R;
 import com.dongkui.gifttalk.controller.adapter.ItemHomeListViewAdapter;
+import com.dongkui.gifttalk.controller.adapter.ItemHomeRecyclerViewAdapter;
 import com.dongkui.gifttalk.controller.adapter.ItemHomeRotateAdapter;
 import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 import com.dongkui.gifttalk.model.bean.ItemHomeListViewBean;
+import com.dongkui.gifttalk.model.bean.ItemHomeRecyclerViewBean;
 import com.dongkui.gifttalk.model.bean.ItemHomeRotateBean;
 import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
@@ -37,6 +41,9 @@ public class HomeSelectionFragment extends AbsBaseFragment {
     private CustomListView listView;
     private List<ItemHomeListViewBean> listViewBeen;
     private ItemHomeListViewAdapter listViewAdapter;
+    private List<ItemHomeRecyclerViewBean> recyclerViewBean;
+    private ItemHomeRecyclerViewAdapter recyclerViewAdapter;
+    private RecyclerView homeRecyclerView;
 
     @Override
     protected int setLayout() {
@@ -48,6 +55,7 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         viewPager = byView(R.id.home_rotate_vp);
         pointLl = byView(R.id.home_rotate_point_container);
         listView = byView(R.id.home_list_view);
+        homeRecyclerView = byView(R.id.home_recycler_view);
     }
 
     @Override
@@ -73,8 +81,10 @@ public class HomeSelectionFragment extends AbsBaseFragment {
 
 
         listViewBeenRequest();
+        recyclerViewBeanRequest();
 
-
+        GridLayoutManager manager = new GridLayoutManager(context,1,GridLayoutManager.HORIZONTAL,false);
+        homeRecyclerView.setLayoutManager(manager);
     }
 
 
@@ -254,5 +264,32 @@ public class HomeSelectionFragment extends AbsBaseFragment {
 
     }
 
+    /**
+     * RecyclerView解析数据
+     */
+    private void recyclerViewBeanRequest() {
+        VolleyInstance volleyInstance = VolleyInstance.getInstance();
+        volleyInstance.startRequest(ValueTools.HOMERECYCLERVIEW, new OnVolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                ItemHomeRecyclerViewBean bean = gson.fromJson(resultStr, ItemHomeRecyclerViewBean.class);
+
+                recyclerViewBean = new ArrayList<>();
+                for (int i = 0; i < bean.getData().getSecondary_banners().size(); i++) {
+                    recyclerViewBean.add(bean);
+                }
+                Log.d("HomeSelectionFragment", "recyclerViewBean:" + recyclerViewBean);
+                recyclerViewAdapter = new ItemHomeRecyclerViewAdapter(context);
+                recyclerViewAdapter.setDatas(recyclerViewBean);
+                homeRecyclerView.setAdapter(recyclerViewAdapter);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+    }
 
 }

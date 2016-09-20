@@ -20,7 +20,11 @@ public final class ValueTools {
      */
     public static final String ROTATEPICTUREURL = "http://api.liwushuo.com/v2/banners";
     /**
-     * 首页精选ListView数据接口
+     * 首页横向的RecyclerView图片接口
+     */
+    public static final String HOMERECYCLERVIEW = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
+    /**
+     * 首页精选数据接口
      */
     public static final String HOMELISTVIEWURL = "http://api.liwushuo.com/v2/channels/101/items_v2?ad=2&gender=1&generation=2&limit=20&offset=0";
     /**
