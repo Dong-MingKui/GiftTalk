@@ -1,5 +1,7 @@
 package com.dongkui.gifttalk.controller.fragment.giftfragment;
 
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 import android.widget.ImageView;
@@ -28,6 +30,14 @@ public class GiftRecDayFragment extends AbsBaseFragment {
     private List<ItemGiftRecyclerViewBean> recyclerViewBean;
     private ItemGiftRecyclerViewAdapter recyclerViewAdapter;
 
+    public static GiftFragment newInstance(String url) {
+        Bundle args = new Bundle();
+        args.putString("gift", url);
+        GiftFragment fragment = new GiftFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_gift_recday;
@@ -50,6 +60,8 @@ public class GiftRecDayFragment extends AbsBaseFragment {
     }
 
     private void RecyclerViewRequest() {
+//        Bundle bundle = getArguments();
+//        String allUrl = bundle.getString("gift");
         VolleyInstance volleyInstance = VolleyInstance.getInstance();
         volleyInstance.startRequest(ValueTools.GIFTRECYCLERVIEW, new OnVolleyResult() {
             @Override
@@ -60,7 +72,7 @@ public class GiftRecDayFragment extends AbsBaseFragment {
                 for (int i = 0; i < bean.getData().getItems().size(); i++) {
                     recyclerViewBean.add(bean);
                 }
-                Picasso.with(context).load(bean.getData().getCover_image()).into(coverImage);
+                Picasso.with(context).load(bean.getData().getCover_image()).config(Bitmap.Config.ALPHA_8).into(coverImage);
                 Log.d("GiftRecDayFragment", "recyclerViewBean:" + recyclerViewBean);
                 recyclerViewAdapter.setDatas(recyclerViewBean);
                 recyclerView.setAdapter(recyclerViewAdapter);

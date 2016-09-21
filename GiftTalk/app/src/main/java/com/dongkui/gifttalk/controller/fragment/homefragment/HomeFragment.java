@@ -14,6 +14,7 @@ import android.widget.PopupWindow;
 import com.dongkui.gifttalk.R;
 import com.dongkui.gifttalk.controller.adapter.AllFragmentAdapter;
 import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
+import com.dongkui.gifttalk.utils.ValueTools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +47,21 @@ public class HomeFragment extends AbsBaseFragment {
     protected void initDatas() {
         adapter = new AllFragmentAdapter(getChildFragmentManager());
         fragments = new ArrayList<>();
-        for (int i = 0; i < 13; i++) {
-            fragments.add(new HomeSelectionFragment());
-        }
-//        fragments.add(new HomeGiftGFFragment());
+
+        fragments.add(HomeSelectionFragment.newInstance());
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOMEGIFTGFLISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME129LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME125LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME26LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME6LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME17LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME24LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME127LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME14LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME126LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME28LISTVIEW));
+        fragments.add(HomeGiftGFFragment.newInstance(ValueTools.HOME11LISTVIEW));
+
         adapter.setFragments(fragments);
         homeVp.setAdapter(adapter);
         homeTab.setupWithViewPager(homeVp);
@@ -62,7 +74,7 @@ public class HomeFragment extends AbsBaseFragment {
         homeMeanArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RotateAnimation anim = new RotateAnimation(0,180, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+                RotateAnimation anim = new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 anim.setDuration(100);
                 anim.setFillAfter(true);
                 homeMeanArrow.clearAnimation();
@@ -78,7 +90,7 @@ public class HomeFragment extends AbsBaseFragment {
     private void popWindowShow() {
 
         PopupWindow window = new PopupWindow(context);
-        View view = LayoutInflater.from(context).inflate(R.layout.item_home_top_mean_pw,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_home_top_mean_pw, null);
         window.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         window.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setContentView(view);

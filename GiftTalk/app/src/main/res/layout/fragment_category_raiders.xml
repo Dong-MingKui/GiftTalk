@@ -12,14 +12,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="@dimen/category_recycler_view_margin">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
-                android:text="栏目" />
+                android:text="@string/category_raiders_column"
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/category_column_right_arrow"
@@ -32,17 +33,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/category_recycler_view_margin"
                 android:layout_toLeftOf="@id/category_column_right_arrow"
-                android:text="查看全部" />
+                android:text="查看全部"
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_raider_column_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginLeft="@dimen/category_recycler_view_margin"
+            android:layout_marginRight="@dimen/category_recycler_view_margin" />
 
         <View
             android:layout_width="match_parent"
@@ -52,14 +55,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="@dimen/category_recycler_view_margin">
 
             <TextView
+                android:id="@+id/category_kind_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
-                android:text="品种" />
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/category_kind_right_arrow"
@@ -72,18 +76,110 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/category_recycler_view_margin"
                 android:layout_toLeftOf="@id/category_kind_right_arrow"
-                android:text="查看全部" />
+                android:text="查看全部"
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_raider_kind_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/category_recycler_view_margin"
+            android:layout_marginRight="@dimen/category_recycler_view_margin" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#d7d7d7" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
+            android:layout_margin="@dimen/category_recycler_view_margin">
 
+            <TextView
+                android:id="@+id/category_style_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="12sp" />
+
+            <ImageView
+
+                android:id="@+id/category_style_right_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_right_arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/category_recycler_view_margin"
+                android:layout_toLeftOf="@id/category_style_right_arrow"
+                android:text="查看全部"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_raider_style_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/category_recycler_view_margin"
+            android:layout_marginRight="@dimen/category_recycler_view_margin" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#d7d7d7" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/category_recycler_view_margin">
+
+            <TextView
+                android:id="@+id/category_target_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/category_target_right_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_right_arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/category_recycler_view_margin"
+                android:layout_toLeftOf="@id/category_target_right_arrow"
+                android:text="查看全部"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_raider_target_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/category_recycler_view_margin"
+            android:layout_marginRight="@dimen/category_recycler_view_margin" />
     </LinearLayout>
+
 
 </ScrollView>

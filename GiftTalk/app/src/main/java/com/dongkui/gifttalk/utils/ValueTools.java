@@ -28,7 +28,75 @@ public final class ValueTools {
      */
     public static final String HOMELISTVIEWURL = "http://api.liwushuo.com/v2/channels/101/items_v2?ad=2&gender=1&generation=2&limit=20&offset=0";
     /**
+     * 首页送女数据接口
+     */
+    public static final String HOMEGIFTGFLISTVIEW = "http://api.liwushuo.com/v2/channels/10/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页海淘数据接口
+     */
+    public static final String HOME129LISTVIEW = "http://api.liwushuo.com/v2/channels/129/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页创意生活数据接口
+     */
+    public static final String HOME125LISTVIEW = "http://api.liwushuo.com/v2/channels/125/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页送基友数据接口
+     */
+    public static final String HOME26LISTVIEW = "http://api.liwushuo.com/v2/channels/26/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页送爸妈数据接口
+     */
+    public static final String HOME6LISTVIEW = "http://api.liwushuo.com/v2/channels/6/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页送同事数据接口
+     */
+    public static final String HOME17LISTVIEW = "http://api.liwushuo.com/v2/channels/17/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页送宝贝数据接口
+     */
+    public static final String HOME24LISTVIEW = "http://api.liwushuo.com/v2/channels/24/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页设计感数据接口
+     */
+    public static final String HOME127LISTVIEW = "http://api.liwushuo.com/v2/channels/127/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页文艺风数据接口
+     */
+    public static final String HOME14LISTVIEW = "http://api.liwushuo.com/v2/channels/14/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页奇葩搞怪数据接口
+     */
+    public static final String HOME126LISTVIEW = "http://api.liwushuo.com/v2/channels/126/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页科技范数据接口
+     */
+    public static final String HOME28LISTVIEW = "http://api.liwushuo.com/v2/channels/28/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
+     * 首页萌萌哒数据接口
+     */
+    public static final String HOME11LISTVIEW = "http://api.liwushuo.com/v2/channels/11/items_v2?gender=1&limit=20&offset=0&generation=2";
+    /**
      * 榜单每日精选数据接口
      */
     public static final String GIFTRECYCLERVIEW = "http://api.liwushuo.com/v2/ranks_v2/ranks/1?limit=20&offset=0";
+    /**
+     * 榜单TOP100数据接口
+     */
+    public static final String GIFTRECYCLERVIEW2 = "http://api.liwushuo.com/v2/ranks_v2/ranks/2?limit=20&offset=0";
+    /**
+     * 榜单独立原创榜数据接口
+     */
+    public static final String GIFTRECYCLERVIEW3 = "http://api.liwushuo.com/v2/ranks_v2/ranks/3?limit=20&offset=0";
+    /**
+     * 榜单新星榜数据接口
+     */
+    public static final String GIFTRECYCLERVIEW4 = "http://api.liwushuo.com/v2/ranks_v2/ranks/4?limit=20&offset=0";
+    /**
+     * 分类界面攻略fragment栏目的接口
+     */
+    public static final String CATEGORYRAIDERSCOLUNM = "http://api.liwushuo.com/v2/columns?limit=20&offset=0";
+    /**
+     * 分类界面的品种, 风格, 对象的接口
+     */
+    public static final String CATEGORYRAIDERV = "http://api.liwushuo.com/v2/channel_groups/all";
 }

@@ -21,6 +21,7 @@ public class GiftFragment extends AbsBaseFragment {
     private AllFragmentAdapter adapter;
     private List<Fragment> fragments;
 
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_gift;
@@ -39,7 +40,12 @@ public class GiftFragment extends AbsBaseFragment {
     protected void initDatas() {
         for (int i = 0; i < 4; i++) {
             fragments.add(new GiftRecDayFragment());
+//            fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW));
         }
+//        fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW2));
+//        fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW3));
+//        fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW4));
+
         adapter.setFragments(fragments);
         giftVp.setAdapter(adapter);
         giftTab.setupWithViewPager(giftVp);

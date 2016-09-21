@@ -1,6 +1,7 @@
 package com.dongkui.gifttalk.controller.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class ItemHomeRecyclerViewAdapter extends RecyclerView.Adapter<ItemHomeRe
 
     @Override
     public void onBindViewHolder(HomeViewHolder holder, int position) {
-        Picasso.with(context).load(datas.get(position).getData().getSecondary_banners().get(position).getImage_url()).into(holder.img);
+        Picasso.with(context).load(datas.get(position).getData().getSecondary_banners().get(position).getImage_url()).config(Bitmap.Config.RGB_565).into(holder.img);
     }
 
     @Override

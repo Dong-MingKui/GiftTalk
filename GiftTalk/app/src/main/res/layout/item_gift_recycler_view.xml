@@ -3,42 +3,77 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    card_view:cardCornerRadius="5dp">
+    android:layout_margin="@dimen/gift_card_view_margin"
+    card_view:cardCornerRadius="@dimen/gift_card_corner_radius">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/item_profile_cover_image"
+        <com.dongkui.gifttalk.view.CustomImageView
+            android:id="@+id/item_gift_cover_image"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/gift_card_text_margin"
             android:src="@mipmap/dk_qingxin" />
 
-        <TextView
-            android:id="@+id/item_profile_short_description"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="随时随地的温暖"
-            android:textSize="10sp" />
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/item_gift_order_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/gift_list_view_order"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOP"
+                    android:textColor="#fff"
+                    android:textSize="8sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/item_gift_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/gift_card_short_description"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_gift_short_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="好东西"
+                android:textSize="@dimen/gift_card_short_description" />
+
+        </LinearLayout>
+
 
         <TextView
-            android:id="@+id/item_profile_name"
+            android:id="@+id/item_gift_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/gift_card_text_margin"
             android:layout_marginLeft="5dp"
-            android:text="tanana·不锈钢保温桶"
-            android:textSize="10sp" />
+            android:textSize="@dimen/gift_card_gift_name" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/gift_card_text_margin"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -48,16 +83,15 @@
                 android:gravity="center"
                 android:text="¥"
                 android:textColor="#ff0000"
-                android:textSize="10sp" />
+                android:textSize="@dimen/gift_card_text_price" />
 
             <TextView
-                android:id="@+id/item_profile_price"
+                android:id="@+id/item_gift_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="199.00"
                 android:textColor="#ff0000"
-                android:textSize="10sp" />
+                android:textSize="@dimen/gift_card_text_price" />
 
         </LinearLayout>
 

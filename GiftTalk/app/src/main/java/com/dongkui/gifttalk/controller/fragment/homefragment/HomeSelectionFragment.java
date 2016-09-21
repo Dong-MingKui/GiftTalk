@@ -1,5 +1,6 @@
 package com.dongkui.gifttalk.controller.fragment.homefragment;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
@@ -45,6 +46,12 @@ public class HomeSelectionFragment extends AbsBaseFragment {
     private ItemHomeRecyclerViewAdapter recyclerViewAdapter;
     private RecyclerView homeRecyclerView;
 
+    public static HomeSelectionFragment newInstance() {
+        Bundle args = new Bundle();
+        HomeSelectionFragment fragment = new HomeSelectionFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setLayout() {
         return R.layout.fragment_home_selection;

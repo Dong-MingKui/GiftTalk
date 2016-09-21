@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.dongkui.gifttalk.view.CustomImageView
+        android:layout_margin="5dp"
+        android:id="@+id/category_column_banner_image_url"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/dk_qingxin" />
+
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/category_column_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="13sp"
+            android:text="礼物帮兄"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/category_column_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:text="更新至第74期"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/category_column_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="陶局长"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

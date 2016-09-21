@@ -8,6 +8,45 @@
     <dimen name="activity_smaller_margin">2dp</dimen>
     <dimen name="activity_small_margin">5dp</dimen>
     <dimen name="activity_middle_margin">10dp</dimen>
+
+
+    <!--底部主导航-->
+    <!--文字大小-->
+    <dimen name="main_menu_text_size">10sp</dimen>
+    <!--边距-->
+    <dimen name="main_menu_margin">5dp</dimen>
+
+
+
+    <!--首页顶部栏-->
+    <!--礼物说的间距-->
+    <dimen name="home_top_text_margin">5dp</dimen>
+
+
+
+    <!--榜单CardView的边距-->
+    <dimen name="gift_card_view_margin">5dp</dimen>
+    <!--CardView内部文字的边距-->
+    <dimen name="gift_card_text_margin">5dp</dimen>
+    <!--CardView内部文字的大小-->
+    <dimen name="gift_card_short_description">10sp</dimen>
+    <dimen name="gift_card_gift_name">10sp</dimen>
+    <dimen name="gift_card_text_price">10sp</dimen>
+    <!--CardView的圆角-->
+    <dimen name="gift_card_corner_radius">5dp</dimen>
+
+
+
+
+    <!--分类界面-->
+    <!--搜索栏的margin-->
+    <dimen name="category_search_margin">5dp</dimen>
+    <!--下面RecyclerView的margin-->
+    <dimen name="category_recycler_view_margin">5dp</dimen>
+
+
+
+
     <!--字体大小-->
     <dimen name="text_small_size">5sp</dimen>
     <dimen name="text_more_middle_size">10sp</dimen>

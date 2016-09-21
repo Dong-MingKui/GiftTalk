@@ -2,12 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="3dp"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <com.dongkui.gifttalk.view.CustomImageView
-        android:id="@+id/item_home_recycler_view_img"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/dk_qingxin" />
+        android:text="热门搜索" />
+
 </LinearLayout>

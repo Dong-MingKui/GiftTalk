@@ -1,7 +1,6 @@
 package com.dongkui.gifttalk.controller.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,7 @@ import java.util.List;
 public class ItemHomeListViewAdapter extends BaseAdapter {
     private Context context;
     private List<ItemHomeListViewBean> datas;
+
     public ItemHomeListViewAdapter(Context context) {
         this.context = context;
     }
@@ -50,28 +50,27 @@ public class ItemHomeListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        if (convertView ==null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_home_list_view,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_home_list_view, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        if (datas.get(position).getData().getItems().get(position).getColumn()!=null&&datas.get(position).getData().getItems().get(position).getColumn().getCategory() !=null) {
+        if (datas.get(position).getData().getItems().get(position).getColumn() != null) {
             viewHolder.categoryTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getCategory());
-            Log.d("ItemHomeListViewAdapter", "=" + datas.get(position).getData().getItems().get(position).getColumn().getCategory());
             viewHolder.titleTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getTitle());
             viewHolder.nickNameTv.setText(datas.get(position).getData().getItems().get(position).getAuthor().getNickname());
             Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
-            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getColumn().getBanner_image_url()).into(viewHolder.bannerImg);
+            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getCover_image_url()).into(viewHolder.coverImg);
             viewHolder.contentTv.setText(datas.get(position).getData().getItems().get(position).getTitle());
             viewHolder.likeCount.setText(String.valueOf(datas.get(position).getData().getItems().get(position).getLikes_count()));
-        }else{
+        } else {
             viewHolder.categoryTv.setVisibility(View.GONE);
             viewHolder.titleTv.setVisibility(View.GONE);
             viewHolder.nickNameTv.setText(datas.get(position).getData().getItems().get(position).getAuthor().getNickname());
             Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
-//            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getColumn().getBanner_image_url()).into(viewHolder.bannerImg);
+            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getCover_image_url()).into(viewHolder.coverImg);
             viewHolder.contentTv.setText(datas.get(position).getData().getItems().get(position).getTitle());
             viewHolder.likeCount.setText(String.valueOf(datas.get(position).getData().getItems().get(position).getLikes_count()));
         }
@@ -84,7 +83,7 @@ public class ItemHomeListViewAdapter extends BaseAdapter {
         TextView titleTv;
         TextView nickNameTv;
         ImageView avatarImg;
-        ImageView bannerImg;
+        ImageView coverImg;
         TextView contentTv;
         TextView likeCount;
 
@@ -93,12 +92,11 @@ public class ItemHomeListViewAdapter extends BaseAdapter {
             titleTv = (TextView) view.findViewById(R.id.item_home_list_title);
             nickNameTv = (TextView) view.findViewById(R.id.item_home_list_nick_name);
             avatarImg = (ImageView) view.findViewById(R.id.item_home_list_user_avatar);
-            bannerImg = (ImageView) view.findViewById(R.id.item_home_list_banner_image);
+            coverImg = (ImageView) view.findViewById(R.id.item_home_list_cover_image);
             contentTv = (TextView) view.findViewById(R.id.item_home_list_content);
             likeCount = (TextView) view.findViewById(R.id.item_home_list_like_count);
         }
     }
-
 
 
 }

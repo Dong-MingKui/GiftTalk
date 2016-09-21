@@ -10,7 +10,7 @@
     <!--主header界面名称-->
     <string name="home_top_name">礼物说</string>
     <string name="gift_top_name">礼物榜</string>
-    <string name="home_top_search_name">中秋佳节送好礼</string>
+    <string name="home_top_search_name">选份走心的好礼送给Ta</string>
     <string name="profile_avatar_name">请登录</string>
 
     <!--我界面的菜单名称-->
@@ -19,6 +19,18 @@
     <string name="profile_mean_coupon">礼劵</string>
     <string name="profile_mean_follow">关注</string>
     <string name="profile_mean_service">客服</string>
+
+    <!--分类界面的名称-->
+    <!--搜索内容-->
+    <string name="category_search_content">中秋佳节送好礼</string>
+    <!--攻略菜单名称-->
+    <string name="category_raiders_column">栏目</string>
+    <!--攻略品种名称-->
+    <string name="category_raiders_kind">品种</string>
+    <!--攻略风格名称-->
+    <string name="category_raiders_style">风格</string>
+    <!--攻略对象名称-->
+    <string name="category_raiders_target">对象</string>
 
 
 </resources>

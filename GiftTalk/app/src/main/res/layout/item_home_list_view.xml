@@ -16,6 +16,8 @@
             android:layout_centerInParent="true"
             android:layout_margin="@dimen/activity_small_margin"
             android:background="#e6aeae"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
             android:text="数码"
             android:textColor="@color/color_text_selected"
             android:textSize="@dimen/text_more_middle_size" />
@@ -51,10 +53,10 @@
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/item_home_list_banner_image"
+    <com.dongkui.gifttalk.view.CustomImageView
+        android:id="@+id/item_home_list_cover_image"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="180dp"
         android:src="@mipmap/dk_qingxin" />
 
 

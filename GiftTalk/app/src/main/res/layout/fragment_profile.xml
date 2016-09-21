@@ -4,22 +4,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/me_avatar_ll"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@mipmap/bg_profile"
-        android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
+        <ImageView
+            android:id="@+id/profile_avatar_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@mipmap/icon_message" />
+
+        <ImageView
+            android:id="@+id/profile_avatar_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:src="@mipmap/me_settings" />
+
+        <ImageView
+            android:id="@+id/avatar_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@id/profile_avatar_settings"
+            android:src="@mipmap/icon_scan" />
+
+
+        <TextView
+            android:id="@+id/profile_avatar_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:drawableTop="@mipmap/me_avatar_boy"
             android:gravity="center"
             android:text="@string/profile_avatar_name"
             android:textColor="@color/color_text" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/profile_mean"
