@@ -23,7 +23,7 @@ import java.util.List;
  * Created by dllo on 16/9/10.
  * 榜首界面中的每日推荐
  */
-public class GiftRecDayFragment extends AbsBaseFragment {
+public class GiftOriginalityFragment extends AbsBaseFragment {
     private CustomRecyclerView recyclerView;
     private ImageView coverImage;
     private ItemGiftRecyclerViewAdapter recyclerViewAdapter;
@@ -60,7 +60,7 @@ public class GiftRecDayFragment extends AbsBaseFragment {
 //        Bundle bundle = getArguments();
 //        String allUrl = bundle.getString("gift");
         VolleyInstance volleyInstance = VolleyInstance.getInstance();
-        volleyInstance.startRequest(ValueTools.GIFTRECYCLERVIEW, new OnVolleyResult() {
+        volleyInstance.startRequest(ValueTools.GIFTRECYCLERVIEW3, new OnVolleyResult() {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();

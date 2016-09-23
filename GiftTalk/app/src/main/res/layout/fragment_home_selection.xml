@@ -34,8 +34,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-             />
+            android:layout_height="90dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,13 +43,36 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_smaller_margin"
-                android:text="-- 9月14日 星期三 --" />
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="1dp"
+                    android:background="#999797" />
+
+                <TextView
+                    android:id="@+id/home_date_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_smaller_margin"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="9月14日 星期三" />
+
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="1dp"
+                    android:background="#999797" />
+
+            </LinearLayout>
+
 
             <TextView
+                android:id="@+id/home_date_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="下次更新 17:00"

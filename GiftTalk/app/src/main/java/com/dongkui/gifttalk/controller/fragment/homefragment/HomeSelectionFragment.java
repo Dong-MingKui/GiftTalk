@@ -8,16 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dongkui.gifttalk.R;
+import com.dongkui.gifttalk.controller.adapter.HomeRotateAdapter;
 import com.dongkui.gifttalk.controller.adapter.ItemHomeListViewAdapter;
 import com.dongkui.gifttalk.controller.adapter.ItemHomeRecyclerViewAdapter;
-import com.dongkui.gifttalk.controller.adapter.ItemHomeRotateAdapter;
 import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
+import com.dongkui.gifttalk.model.bean.HomeRotatePictureUrlBean;
 import com.dongkui.gifttalk.model.bean.ItemHomeListViewBean;
 import com.dongkui.gifttalk.model.bean.ItemHomeRecyclerViewBean;
-import com.dongkui.gifttalk.model.bean.ItemHomeRotateBean;
 import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
 import com.dongkui.gifttalk.utils.ValueTools;
@@ -34,17 +35,20 @@ public class HomeSelectionFragment extends AbsBaseFragment {
 
     private ViewPager viewPager;
     private LinearLayout pointLl;// 轮播图状态改变的小圆点容器
-    private List<ItemHomeRotateBean> datas = new ArrayList<>();
-    private ItemHomeRotateAdapter vpAdapter;
+    private List<HomeRotatePictureUrlBean.DataBean.BannersBean> bannersBean;
+    private HomeRotateAdapter rotateAdapter;
     private Handler handler;
     private boolean isRotate = false;
     private Runnable rotateRunnable;
     private CustomListView listView;
-    private List<ItemHomeListViewBean> listViewBeen;
+
     private ItemHomeListViewAdapter listViewAdapter;
     private List<ItemHomeRecyclerViewBean> recyclerViewBean;
     private ItemHomeRecyclerViewAdapter recyclerViewAdapter;
     private RecyclerView homeRecyclerView;
+    // 定义更新时间
+    private TextView dateDay;
+    private TextView dateTime;
 
     public static HomeSelectionFragment newInstance() {
         Bundle args = new Bundle();
@@ -52,6 +56,7 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_home_selection;
@@ -63,35 +68,27 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         pointLl = byView(R.id.home_rotate_point_container);
         listView = byView(R.id.home_list_view);
         homeRecyclerView = byView(R.id.home_recycler_view);
+
+        // 事件的初始化组件
+        dateDay = byView(R.id.home_date_day);
+        dateTime = byView(R.id.home_date_time);
     }
 
     @Override
     protected void initDatas() {
 
-
         // 请求数据
-//        RequestDatas();
-        // 构造数据
-        buildDatas();
-        vpAdapter = new ItemHomeRotateAdapter(datas, context);
-        viewPager.setAdapter(vpAdapter);
-        // ViewPager的页数为int最大值, 设置当前页多一些, 可以上来就向前滑动
-        // 为了保证第一页始终为数据的第0条 取余要为0, 因此设置数据集合大小的倍数
-        viewPager.setCurrentItem(datas.size() * 100);
-        // 开始轮播
-        handler = new Handler();
-        startRotate();
-        // 添加小圆点
-        addPoints();
-        // 随着轮播改变小圆点
-        changePoints();
+        RequestDatas();
 
+        listViewAdapter = new ItemHomeListViewAdapter(context);
 
         listViewBeenRequest();
         recyclerViewBeanRequest();
 
-        GridLayoutManager manager = new GridLayoutManager(context,1,GridLayoutManager.HORIZONTAL,false);
+        GridLayoutManager manager = new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false);
         homeRecyclerView.setLayoutManager(manager);
+
+
     }
 
 
@@ -110,13 +107,14 @@ public class HomeSelectionFragment extends AbsBaseFragment {
             public void onPageSelected(int position) {
                 if (isRotate) {
                     // 把小点设置为黑点
-                    for (int i = 0; i < datas.size(); i++) {
+
+                    for (int i = 0; i < bannersBean.size(); i++) {
                         ImageView pointIv = (ImageView) pointLl.getChildAt(i);
                         pointIv.setImageResource(R.mipmap.btn_check_normal_nightmode);
                         pointIv.setAlpha(0.3f);
                     }
                     // 设置当前位置小点为白点
-                    ImageView iv = (ImageView) pointLl.getChildAt(position % datas.size());
+                    ImageView iv = (ImageView) pointLl.getChildAt(position % bannersBean.size());
                     iv.setImageResource(R.mipmap.btn_check_normal);
                 }
             }
@@ -133,7 +131,7 @@ public class HomeSelectionFragment extends AbsBaseFragment {
      */
     private void addPoints() {
         // 添加多少张图片加载多少个小圆点
-        for (int i = 0; i < datas.size(); i++) {
+        for (int i = 0; i < bannersBean.size(); i++) {
             ImageView pointIv = new ImageView(context);
             pointIv.setPadding(15, 5, 15, 5);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(60, 50);
@@ -166,21 +164,6 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         handler.postDelayed(rotateRunnable, ValueTools.ROTATETIME);
     }
 
-    /**
-     * 构造数据
-     */
-    private void buildDatas() {
-        datas = new ArrayList<>();
-        datas.add(new ItemHomeRotateBean("http://img03.liwushuo.com/image/160907/2e7nf9evv.jpg-w720"));
-        datas.add(new ItemHomeRotateBean("http://img01.liwushuo.com/image/160912/w27nffhwn.jpg-w720"));
-        datas.add(new ItemHomeRotateBean("http://img02.liwushuo.com/image/160912/oc9jytqbo.jpg-w720"));
-        datas.add(new ItemHomeRotateBean("http://img01.liwushuo.com/image/160906/4aco2fhmd.jpg-w720"));
-        datas.add(new ItemHomeRotateBean("http://img03.liwushuo.com/image/160908/a0h3m4p1p.jpg-w720"));
-        datas.add(new ItemHomeRotateBean("http://img02.liwushuo.com/image/160901/2sm8iy4n4.jpg-w720"));
-        datas.add(new ItemHomeRotateBean("http://img02.liwushuo.com/image/160905/sfgmt79zc.jpg-w720"));
-
-    }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -196,46 +179,37 @@ public class HomeSelectionFragment extends AbsBaseFragment {
     /**
      * 轮播图解析加载数据到实体类
      */
-//    private void RequestDatas() {
-//        VolleyInstance volleyInstance = VolleyInstance.getInstance();
-////        volleyInstance.startRequest(ValueTools.ROTATEPICTUREURL, new OnVolleyResult() {
-////            @Override
-////            public void success(String resultStr) {
-////                // 解析实体类
-////                Gson gson = new Gson();
-////                // 从gson数据解析到实体类
-////                ItemHomeRotateBean rotateBean = gson.fromJson(resultStr, ItemHomeRotateBean.class);
-////                // 从实体类获取解析数据集合
-////                datas = rotateBean.getData().getBanners();
-////                vpAdapter.setDatas(datas);
-////                // 网络图片框架:毕加索
-////                // 通过context加载图片网址, 到这个ImageView
-////            }
-////            @Override
-////            public void failure() {
-////
-////            }
-////        });
-//        OnVolleyResult result = new OnVolleyResult() {
-//            @Override
-//            public void success(String resultStr) {
-//                Gson gson = new Gson();
-//                // 从gson数据解析到实体类
-//                ItemHomeRotateBean rotateBean = gson.fromJson(resultStr, ItemHomeRotateBean.class);
-//                // 从实体类获取解析数据集合
-//                datas = rotateBean.getData().getBanners();
-//                vpAdapter.setDatas(datas);
-//                // 网络图片框架:毕加索
-//                // 通过context加载图片网址, 到这个ImageView
-//            }
-//
-//            @Override
-//            public void failure() {
-//
-//            }
-//        };
-//        volleyInstance.startRequest(ValueTools.ROTATEPICTUREURL,result);
-//    }
+    private void RequestDatas() {
+        VolleyInstance volleyInstance = VolleyInstance.getInstance();
+        volleyInstance.startRequest(ValueTools.ROTATEPICTUREURL, new OnVolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                HomeRotatePictureUrlBean bean = gson.fromJson(resultStr, HomeRotatePictureUrlBean.class);
+
+                Log.d("HomeSelectionFragment", "bean:" + bean);
+                bannersBean = bean.getData().getBanners();
+                Log.d("HomeSelectionFragment", "bannersBean:" + bannersBean);
+                rotateAdapter = new HomeRotateAdapter(bannersBean, context);
+                // ViewPager的页数为int最大值, 设置当前页多一些, 可以上来就向前滑动
+                // 为了保证第一页始终为数据的第0条 取余要为0, 因此设置数据集合大小的倍数
+                viewPager.setCurrentItem(bannersBean.size() * 100);
+                viewPager.setAdapter(rotateAdapter);
+                // 开始轮播
+                handler = new Handler();
+                startRotate();
+                // 添加小圆点
+                addPoints();
+                // 随着轮播改变小圆点
+                changePoints();
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+    }
 
 
     /**
@@ -250,22 +224,16 @@ public class HomeSelectionFragment extends AbsBaseFragment {
                 Gson gson = new Gson();
                 ItemHomeListViewBean bean = gson.fromJson(resultStr, ItemHomeListViewBean.class);
 
-                listViewBeen = new ArrayList<>();
-                for (int i = 0; i < bean.getData().getItems().size(); i++) {
-                    listViewBeen.add(bean);
-                }
+                List<ItemHomeListViewBean.DataBean.ItemsBean> listViewBeen = bean.getData().getItems();
 
-                listViewAdapter = new ItemHomeListViewAdapter(context);
-                Log.d("HomeSelectionFragment", "listViewBeen.size():" + listViewBeen.size());
                 listViewAdapter.setDatas(listViewBeen);
-                Log.d("HomeSelectionFragment", "listViewBeen:" + listViewBeen);
                 listView.setAdapter(listViewAdapter);
+//                dateDay.setText(bean);
             }
 
             @Override
             public void failure() {
-                Toast.makeText(context, "错误", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(context, "网络断开", Toast.LENGTH_SHORT).show();
             }
         });
 

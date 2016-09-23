@@ -38,7 +38,7 @@ public class CategoryFragment extends AbsBaseFragment {
         adapter = new AllFragmentAdapter(getChildFragmentManager());
         fragments = new ArrayList<>();
         fragments.add(new CategoryRaidersFragment());
-        fragments.add(new CategoryRaidersFragment());
+        fragments.add(new CategorySingleFragment());
         adapter.setFragments(fragments);
         categoryVp.setAdapter(adapter);
         categoryTab.setupWithViewPager(categoryVp);

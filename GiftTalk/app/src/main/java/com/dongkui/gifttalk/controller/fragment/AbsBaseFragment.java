@@ -17,6 +17,38 @@ import com.dongkui.gifttalk.controller.activity.AbsBaseActivity;
  */
 public abstract class AbsBaseFragment extends Fragment {
     protected Context context;
+    protected Object mRootView;
+    protected boolean isVisible;
+    private boolean isPrepared;
+    private boolean isFirst = true;
+
+//    public AbsBaseFragment() {
+//
+//    }
+//
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if (getUserVisibleHint()) {
+//            isVisible = true;
+//            lazyLoad();
+//        } else {
+//            isVisible = false;
+//            onInvisible();
+//        }
+//    }
+
+    protected void onInvisible() {
+
+    }
+
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible || !isFirst) {
+            return;
+        }
+        initDatas();
+        isFirst = false;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -24,10 +56,17 @@ public abstract class AbsBaseFragment extends Fragment {
         this.context = context;
     }
 
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setHasOptionsMenu(true);
+//    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(),container,false);
+
+        return inflater.inflate(setLayout(), container, false);
     }
 
     @Override
@@ -40,6 +79,8 @@ public abstract class AbsBaseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initDatas();
+//        isPrepared = true;
+//        lazyLoad();
     }
 
     /**
@@ -53,22 +94,22 @@ public abstract class AbsBaseFragment extends Fragment {
     protected abstract void initView();
 
     /**
-     *  初始化数据
+     * 初始化数据
      */
     protected abstract void initDatas();
 
     /**
      * 简化findViewById
      */
-    protected <T extends View>T byView(int resId){
+    protected <T extends View> T byView(int resId) {
         return (T) getView().findViewById(resId);
     }
 
     /**
-     *  不带值跳转
+     * 不带值跳转
      */
-    protected void goTo(Class<? extends AbsBaseActivity>to){
-        context.startActivity(new Intent(context,to));
+    protected void goTo(Class<? extends AbsBaseActivity> to) {
+        context.startActivity(new Intent(context, to));
     }
 
 }

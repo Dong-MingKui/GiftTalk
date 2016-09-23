@@ -8,6 +8,11 @@
     <color name="color_text_normal">#A89A9A</color>
     <color name="color_text">#fff</color>
     <color name="color_bg">#fff</color>
+
+
+    <!--分类界面左边ListView的选择颜色-->
+    <color name="category_menu_color_text_selected">#E73544</color>
+    <color name="category_menu_color_text_normal">#302f2f</color>
     
     
 

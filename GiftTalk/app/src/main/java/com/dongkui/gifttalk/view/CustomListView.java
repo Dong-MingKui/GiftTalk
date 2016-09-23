@@ -24,7 +24,7 @@ public class CustomListView extends ListView{
     }
 
     /**
-     * 展开listview
+     * 展开ListView
      * onMeasure 这个方法是决定view的大小
      * 重新测量 - 规定他的高度是展开的.
      */
@@ -47,6 +47,9 @@ public class CustomListView extends ListView{
         }
         return super.dispatchTouchEvent(ev);
     }
+
+
+
 }
 
 

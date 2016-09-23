@@ -20,13 +20,13 @@ import java.util.List;
  */
 public class ItemHomeListViewAdapter extends BaseAdapter {
     private Context context;
-    private List<ItemHomeListViewBean> datas;
+    private List<ItemHomeListViewBean.DataBean.ItemsBean> datas;
 
     public ItemHomeListViewAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<ItemHomeListViewBean> datas) {
+    public void setDatas(List<ItemHomeListViewBean.DataBean.ItemsBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -57,22 +57,22 @@ public class ItemHomeListViewAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        if (datas.get(position).getData().getItems().get(position).getColumn() != null) {
-            viewHolder.categoryTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getCategory());
-            viewHolder.titleTv.setText(datas.get(position).getData().getItems().get(position).getColumn().getTitle());
-            viewHolder.nickNameTv.setText(datas.get(position).getData().getItems().get(position).getAuthor().getNickname());
-            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
-            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getCover_image_url()).into(viewHolder.coverImg);
-            viewHolder.contentTv.setText(datas.get(position).getData().getItems().get(position).getTitle());
-            viewHolder.likeCount.setText(String.valueOf(datas.get(position).getData().getItems().get(position).getLikes_count()));
+        if (datas.get(position).getColumn() != null) {
+            viewHolder.categoryTv.setText(datas.get(position).getColumn().getCategory());
+            viewHolder.titleTv.setText(datas.get(position).getColumn().getTitle());
+            viewHolder.nickNameTv.setText(datas.get(position).getAuthor().getNickname());
+            Picasso.with(context).load(datas.get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
+            Picasso.with(context).load(datas.get(position).getCover_image_url()).into(viewHolder.coverImg);
+            viewHolder.contentTv.setText(datas.get(position).getTitle());
+            viewHolder.likeCount.setText(String.valueOf(datas.get(position).getLikes_count()));
         } else {
             viewHolder.categoryTv.setVisibility(View.GONE);
             viewHolder.titleTv.setVisibility(View.GONE);
-            viewHolder.nickNameTv.setText(datas.get(position).getData().getItems().get(position).getAuthor().getNickname());
-            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
-            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getCover_image_url()).into(viewHolder.coverImg);
-            viewHolder.contentTv.setText(datas.get(position).getData().getItems().get(position).getTitle());
-            viewHolder.likeCount.setText(String.valueOf(datas.get(position).getData().getItems().get(position).getLikes_count()));
+            viewHolder.nickNameTv.setText(datas.get(position).getAuthor().getNickname());
+            Picasso.with(context).load(datas.get(position).getAuthor().getAvatar_url()).into(viewHolder.avatarImg);
+            Picasso.with(context).load(datas.get(position).getCover_image_url()).into(viewHolder.coverImg);
+            viewHolder.contentTv.setText(datas.get(position).getTitle());
+            viewHolder.likeCount.setText(String.valueOf(datas.get(position).getLikes_count()));
         }
 
         return convertView;

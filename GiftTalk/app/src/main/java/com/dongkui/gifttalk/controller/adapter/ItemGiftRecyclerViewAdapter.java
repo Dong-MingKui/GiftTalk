@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dongkui.gifttalk.R;
@@ -23,13 +24,13 @@ import java.util.List;
  */
 public class ItemGiftRecyclerViewAdapter extends RecyclerView.Adapter<ItemGiftRecyclerViewAdapter.MyViewHolder> {
     private Context context;
-    private List<ItemGiftRecyclerViewBean> datas;
+    private List<ItemGiftRecyclerViewBean.DataBean.ItemsBean> datas;
 
     public ItemGiftRecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<ItemGiftRecyclerViewBean> datas) {
+    public void setDatas(List<ItemGiftRecyclerViewBean.DataBean.ItemsBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -43,18 +44,18 @@ public class ItemGiftRecyclerViewAdapter extends RecyclerView.Adapter<ItemGiftRe
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//        if (datas.get(position).getData().getItems().get(position).getCategory_id() != 0) {
+//        if (datas.get(position).getCategory_id() != 0) {
 //            holder.orderLl.setVisibility(View.GONE);
-            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.coverImageUrl);
-            holder.shortDescriptionTv.setText(datas.get(position).getData().getItems().get(position).getShort_description());
-            holder.nameTv.setText(datas.get(position).getData().getItems().get(position).getName());
-            holder.priceTv.setText(datas.get(position).getData().getItems().get(position).getPrice());
+            Picasso.with(context).load(datas.get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.coverImageUrl);
+            holder.shortDescriptionTv.setText(datas.get(position).getShort_description());
+            holder.nameTv.setText(datas.get(position).getName());
+            holder.priceTv.setText(datas.get(position).getPrice());
 //        } else {
-//            holder.orderTv.setText(datas.get(position).getData().getItems().get(position).getOrder());
-//            Picasso.with(context).load(datas.get(position).getData().getItems().get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.coverImageUrl);
-//            holder.shortDescriptionTv.setText(datas.get(position).getData().getItems().get(position).getShort_description());
-//            holder.nameTv.setText(datas.get(position).getData().getItems().get(position).getName());
-//            holder.priceTv.setText(datas.get(position).getData().getItems().get(position).getPrice());
+            holder.orderTv.setText(datas.get(position).getOrder() + "");
+//            Picasso.with(context).load(datas.get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.coverImageUrl);
+//            holder.shortDescriptionTv.setText(datas.get(position).getShort_description());
+//            holder.nameTv.setText(datas.get(position).getName());
+//            holder.priceTv.setText(datas.get(position).getPrice());
 //        }
 
     }
@@ -70,8 +71,8 @@ public class ItemGiftRecyclerViewAdapter extends RecyclerView.Adapter<ItemGiftRe
         TextView shortDescriptionTv;
         TextView nameTv;
         TextView priceTv;
-//        TextView orderTv;
-//        LinearLayout orderLl;
+        TextView orderTv;
+        LinearLayout orderLl;
 
         public MyViewHolder(View view) {
             super(view);
@@ -79,8 +80,8 @@ public class ItemGiftRecyclerViewAdapter extends RecyclerView.Adapter<ItemGiftRe
             shortDescriptionTv = (TextView) view.findViewById(R.id.item_gift_short_description);
             nameTv = (TextView) view.findViewById(R.id.item_gift_name);
             priceTv = (TextView) view.findViewById(R.id.item_gift_price);
-//            orderTv = (TextView) view.findViewById(R.id.item_gift_order);
-//            orderLl = (LinearLayout) view.findViewById(R.id.item_gift_order_ll);
+            orderTv = (TextView) view.findViewById(R.id.item_gift_order);
+            orderLl = (LinearLayout) view.findViewById(R.id.item_gift_order_ll);
         }
     }
 

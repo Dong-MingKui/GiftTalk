@@ -3,6 +3,7 @@ package com.dongkui.gifttalk.controller.activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
+
 import com.dongkui.gifttalk.R;
 import com.dongkui.gifttalk.controller.fragment.categoryfragment.CategoryFragment;
 import com.dongkui.gifttalk.controller.fragment.giftfragment.GiftFragment;
@@ -26,6 +27,7 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
         mainRg = byView(R.id.main_rg);
 
     }
+
 
     @Override
     protected void initDatas() {

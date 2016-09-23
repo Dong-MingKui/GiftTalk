@@ -11,7 +11,6 @@ import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +18,6 @@ import java.util.List;
  */
 public class HomeGiftGFFragment extends AbsBaseFragment {
     private ListView gtListView;
-    private List<ItemHomeListViewBean> datas;
     private ItemHomeListViewAdapter listViewAdapter;
 
     public static HomeGiftGFFragment newInstance(String url) {
@@ -37,14 +35,13 @@ public class HomeGiftGFFragment extends AbsBaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void  initView() {
         gtListView = byView(R.id.home_gift_GF_list_view);
     }
 
     @Override
     protected void initDatas() {
         listViewAdapter = new ItemHomeListViewAdapter(context);
-        datas = new ArrayList<>();
         listViewRequest();
 
     }
@@ -59,9 +56,7 @@ public class HomeGiftGFFragment extends AbsBaseFragment {
                 Gson gson = new Gson();
                 ItemHomeListViewBean bean = gson.fromJson(resultStr, ItemHomeListViewBean.class);
 
-                for (int i = 0; i < bean.getData().getItems().size(); i++) {
-                    datas.add(bean);
-                }
+                List<ItemHomeListViewBean.DataBean.ItemsBean> datas = bean.getData().getItems();
                 listViewAdapter.setDatas(datas);
                 gtListView.setAdapter(listViewAdapter);
             }

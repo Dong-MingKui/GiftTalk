@@ -96,7 +96,11 @@ public final class ValueTools {
      */
     public static final String CATEGORYRAIDERSCOLUNM = "http://api.liwushuo.com/v2/columns?limit=20&offset=0";
     /**
-     * 分类界面的品种, 风格, 对象的接口
+     * 分类界面攻略的品种, 风格, 对象的接口
      */
     public static final String CATEGORYRAIDERV = "http://api.liwushuo.com/v2/channel_groups/all";
+    /**
+     * 分类界面单品界面数据接口
+     */
+    public static final String CATEGORYSINGLE = "http://api.liwushuo.com/v2/item_categories/tree";
 }

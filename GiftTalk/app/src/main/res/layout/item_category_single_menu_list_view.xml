@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/item_category_single_menu_view"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#e60606"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/item_category_single_menu_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="热门搜索"
+            android:textColor="@drawable/category_menu_list_view" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

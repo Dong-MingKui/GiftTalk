@@ -40,7 +40,6 @@ public class HomeFragment extends AbsBaseFragment {
         homeTab = byView(R.id.home_tab);
         homeVp = byView(R.id.home_vp);
         homeMeanArrow = byView(R.id.home_mean_arrow);
-
     }
 
     @Override

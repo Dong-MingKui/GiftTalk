@@ -31,6 +31,7 @@ public class GiftFragment extends AbsBaseFragment {
     protected void initView() {
         giftTab = byView(R.id.gift_tab);
         giftVp = byView(R.id.gift_vp);
+
         adapter = new AllFragmentAdapter(getChildFragmentManager());
         fragments = new ArrayList<>();
 
@@ -38,10 +39,12 @@ public class GiftFragment extends AbsBaseFragment {
 
     @Override
     protected void initDatas() {
-        for (int i = 0; i < 4; i++) {
-            fragments.add(new GiftRecDayFragment());
-//            fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW));
-        }
+
+        fragments.add(new GiftRecDayFragment());
+        fragments.add(new GiftTOP100Fragment());
+        fragments.add(new GiftOriginalityFragment());
+        fragments.add(new GiftNovaFragment());
+//        fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW));
 //        fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW2));
 //        fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW3));
 //        fragments.add(GiftRecDayFragment.newInstance(ValueTools.GIFTRECYCLERVIEW4));
