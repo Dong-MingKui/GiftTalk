@@ -1,17 +1,22 @@
 package com.dongkui.gifttalk.controller.fragment.homefragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dongkui.gifttalk.R;
+import com.dongkui.gifttalk.controller.activity.HomeListViewContentActivity;
+import com.dongkui.gifttalk.controller.activity.HomeRecyclerViewContentActivity;
 import com.dongkui.gifttalk.controller.adapter.HomeRotateAdapter;
 import com.dongkui.gifttalk.controller.adapter.ItemHomeListViewAdapter;
 import com.dongkui.gifttalk.controller.adapter.ItemHomeRecyclerViewAdapter;
@@ -22,14 +27,19 @@ import com.dongkui.gifttalk.model.bean.ItemHomeRecyclerViewBean;
 import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
 import com.dongkui.gifttalk.utils.ValueTools;
+import com.dongkui.gifttalk.utils.minterface.OnRecyclerViewItemClickListener;
 import com.dongkui.gifttalk.view.CustomListView;
+import com.dongkui.gifttalk.view.MyListener;
+import com.dongkui.gifttalk.view.PullToRefreshLayout;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 首页的精选
  */
 public class HomeSelectionFragment extends AbsBaseFragment {
 
@@ -43,12 +53,14 @@ public class HomeSelectionFragment extends AbsBaseFragment {
     private CustomListView listView;
 
     private ItemHomeListViewAdapter listViewAdapter;
-    private List<ItemHomeRecyclerViewBean> recyclerViewBean;
+    private List<ItemHomeRecyclerViewBean.DataBean.SecondaryBannersBean> recyclerViewBean;
     private ItemHomeRecyclerViewAdapter recyclerViewAdapter;
     private RecyclerView homeRecyclerView;
+
     // 定义更新时间
     private TextView dateDay;
     private TextView dateTime;
+    private List<ItemHomeListViewBean.DataBean.ItemsBean> listViewBeen;
 
     public static HomeSelectionFragment newInstance() {
         Bundle args = new Bundle();
@@ -69,6 +81,10 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         listView = byView(R.id.home_list_view);
         homeRecyclerView = byView(R.id.home_recycler_view);
 
+
+        ((PullToRefreshLayout) byView(R.id.home_selection_scroll_view)).setOnRefreshListener(new MyListener());
+
+
         // 事件的初始化组件
         dateDay = byView(R.id.home_date_day);
         dateTime = byView(R.id.home_date_time);
@@ -81,14 +97,47 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         RequestDatas();
 
         listViewAdapter = new ItemHomeListViewAdapter(context);
+        recyclerViewAdapter = new ItemHomeRecyclerViewAdapter(context);
 
+        // ListView数据解析加载
         listViewBeenRequest();
+        // RecyclerView数据解析加载
         recyclerViewBeanRequest();
-
+        // PopWindow数据解析加载
         GridLayoutManager manager = new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false);
         homeRecyclerView.setLayoutManager(manager);
 
+        // RecyclerView的点击事件
 
+        recyclerViewAdapter.setOnRecyclerViewItemClickListener(new OnRecyclerViewItemClickListener<String>() {
+            @Override
+            public void OnRecyclerViewItemClick(int position, String s) {
+                Intent intent = new Intent(context, HomeRecyclerViewContentActivity.class);
+                intent.putExtra("picture", recyclerViewBean.get(position).getImage_url());
+                context.startActivity(intent);
+                getActivity().overridePendingTransition( R.anim.home_rv_in,R.anim.home_rv_out);
+                Toast.makeText(context, "点击了RecyclerView", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // ListView的点击事件
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context, HomeListViewContentActivity.class);
+                intent.putExtra("position", listViewBeen.get(position).getUrl());
+                intent.putExtra("likeCount",listViewBeen.get(position).getLikes_count());
+                Log.d("HomeSelectionFragment", "listViewBeen.get(position).getLikes_count():" + listViewBeen.get(position).getLikes_count());
+                context.startActivity(intent);
+                Log.d("HomeSelectionFragment", "点击了ListView");
+            }
+        });
+
+        // 时间获取赋值
+        SimpleDateFormat format = new SimpleDateFormat("MM月dd日 EEEE");
+        Date date = new Date(System.currentTimeMillis());
+        String day = format.format(date);
+        dateDay.setText(day);
     }
 
 
@@ -176,6 +225,7 @@ public class HomeSelectionFragment extends AbsBaseFragment {
         isRotate = false;
     }
 
+
     /**
      * 轮播图解析加载数据到实体类
      */
@@ -186,7 +236,6 @@ public class HomeSelectionFragment extends AbsBaseFragment {
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 HomeRotatePictureUrlBean bean = gson.fromJson(resultStr, HomeRotatePictureUrlBean.class);
-
                 Log.d("HomeSelectionFragment", "bean:" + bean);
                 bannersBean = bean.getData().getBanners();
                 Log.d("HomeSelectionFragment", "bannersBean:" + bannersBean);
@@ -224,7 +273,7 @@ public class HomeSelectionFragment extends AbsBaseFragment {
                 Gson gson = new Gson();
                 ItemHomeListViewBean bean = gson.fromJson(resultStr, ItemHomeListViewBean.class);
 
-                List<ItemHomeListViewBean.DataBean.ItemsBean> listViewBeen = bean.getData().getItems();
+                listViewBeen = bean.getData().getItems();
 
                 listViewAdapter.setDatas(listViewBeen);
                 listView.setAdapter(listViewAdapter);
@@ -249,13 +298,9 @@ public class HomeSelectionFragment extends AbsBaseFragment {
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 ItemHomeRecyclerViewBean bean = gson.fromJson(resultStr, ItemHomeRecyclerViewBean.class);
-
-                recyclerViewBean = new ArrayList<>();
-                for (int i = 0; i < bean.getData().getSecondary_banners().size(); i++) {
-                    recyclerViewBean.add(bean);
-                }
+                recyclerViewBean = bean.getData().getSecondary_banners();
                 Log.d("HomeSelectionFragment", "recyclerViewBean:" + recyclerViewBean);
-                recyclerViewAdapter = new ItemHomeRecyclerViewAdapter(context);
+
                 recyclerViewAdapter.setDatas(recyclerViewBean);
                 homeRecyclerView.setAdapter(recyclerViewAdapter);
             }

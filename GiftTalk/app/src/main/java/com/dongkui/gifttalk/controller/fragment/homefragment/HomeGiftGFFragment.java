@@ -9,12 +9,15 @@ import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 import com.dongkui.gifttalk.model.bean.ItemHomeListViewBean;
 import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
+import com.dongkui.gifttalk.view.MyListener;
+import com.dongkui.gifttalk.view.PullToRefreshLayout;
 import com.google.gson.Gson;
 
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 首页的送女票
  */
 public class HomeGiftGFFragment extends AbsBaseFragment {
     private ListView gtListView;
@@ -37,6 +40,7 @@ public class HomeGiftGFFragment extends AbsBaseFragment {
     @Override
     protected void  initView() {
         gtListView = byView(R.id.home_gift_GF_list_view);
+        ((PullToRefreshLayout) byView(R.id.home_gift_list_view_root)).setOnRefreshListener(new MyListener());
     }
 
     @Override

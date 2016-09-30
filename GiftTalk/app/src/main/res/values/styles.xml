@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="HomeRvContentStyle" parent="android:Theme.Black.NoTitleBar.Fullscreen">// 没有标题充满
+        <item name="android:windowIsFloating">true</item>
+        // 悬浮在Aty的上面
+        <item name="android:windowIsTranslucent">true</item>
+        // 半透明
+        <item name="android:windowNoTitle">true</item>
+        // 没有标题
+        <item name="android:windowBackground">@android:color/transparent</item>
+        // 背景半透明
+        <item name="android:backgroundDimEnabled">true</item>
+        // 背景虚化
+    </style>
+
+
 </resources>

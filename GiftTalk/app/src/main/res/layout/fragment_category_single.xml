@@ -28,7 +28,8 @@
             android:id="@+id/category_single_content_list_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:dividerHeight="-1dp" />
+            android:divider="#fff"
+            android:dividerHeight="1dp" />
     </LinearLayout>
 
 

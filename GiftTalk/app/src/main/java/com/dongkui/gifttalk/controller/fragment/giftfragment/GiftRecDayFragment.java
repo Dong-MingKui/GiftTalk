@@ -13,6 +13,7 @@ import com.dongkui.gifttalk.model.bean.ItemGiftRecyclerViewBean;
 import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
 import com.dongkui.gifttalk.utils.ValueTools;
+import com.dongkui.gifttalk.utils.minterface.OnRecyclerViewItemClickListener;
 import com.dongkui.gifttalk.view.CustomRecyclerView;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -46,6 +47,7 @@ public class GiftRecDayFragment extends AbsBaseFragment {
         recyclerView = byView(R.id.profile_recycler_view);
         coverImage = byView(R.id.profile_cover_image);
 
+
     }
 
     @Override
@@ -54,6 +56,14 @@ public class GiftRecDayFragment extends AbsBaseFragment {
         RecyclerViewRequest();
         GridLayoutManager manager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
+
+        recyclerViewAdapter.setOnRecyclerViewItemClickListener(new OnRecyclerViewItemClickListener<String>() {
+            @Override
+            public void OnRecyclerViewItemClick(int position, String s) {
+                Log.d("sss", "=====");
+            }
+        });
+
     }
 
     private void RecyclerViewRequest() {

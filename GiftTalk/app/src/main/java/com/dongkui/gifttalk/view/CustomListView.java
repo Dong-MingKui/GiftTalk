@@ -48,8 +48,6 @@ public class CustomListView extends ListView{
         return super.dispatchTouchEvent(ev);
     }
 
-
-
 }
 
 

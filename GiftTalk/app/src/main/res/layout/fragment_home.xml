@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
 
     <LinearLayout
+        android:id="@+id/home_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_zero_margin"
         android:layout_weight="1"
@@ -44,32 +45,68 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_zero_margin"
-        android:layout_weight="0.8"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="0.8">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/home_tab"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginBottom="@dimen/activity_smaller_margin"
-            android:layout_weight="10"
-            app:tabIndicatorColor="@color/color_text_selected"
-            app:tabSelectedTextColor="@color/color_text_selected" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/home_mean_arrow"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="@dimen/activity_small_margin"
-            android:layout_weight="1"
-            android:src="@mipmap/icon_btn_arrow_down" />
+            <android.support.design.widget.TabLayout
+                android:id="@+id/home_tab"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginBottom="@dimen/activity_smaller_margin"
+                android:layout_weight="10"
+                app:tabIndicatorColor="@color/color_text_selected"
+                app:tabSelectedTextColor="@color/color_text_selected" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/home_mean_arrow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/activity_small_margin"
+                android:layout_weight="1"
+                android:src="@mipmap/icon_btn_arrow_down" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_tab_ll_after"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/home_tab_after"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginBottom="@dimen/activity_smaller_margin"
+                android:layout_weight="10"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="切换频道" />
+
+            <ImageView
+                android:id="@+id/home_mean_arrow_after"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/activity_small_margin"
+                android:layout_weight="1"
+                android:src="@mipmap/icon_btn_arrow_up" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/home_vp"

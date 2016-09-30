@@ -1,6 +1,7 @@
 package com.dongkui.gifttalk.controller.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +17,12 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
+ * 分类界面左面的ListView的适配器
  */
 public class ItemCategoryMenuListViewAdapter extends BaseAdapter {
     private Context context;
     private List<ItemCategorySingleBean.DataBean.CategoriesBean> singleBeen;
-    public int position;
+    public int selectIndex;
 
     public ItemCategoryMenuListViewAdapter(Context context) {
         this.context = context;
@@ -46,8 +48,8 @@ public class ItemCategoryMenuListViewAdapter extends BaseAdapter {
         return position;
     }
 
-    public void setIndex(int position) {
-        this.position = position;
+    public void setIndex(int selectIndex) {
+        this.selectIndex = selectIndex;
         notifyDataSetChanged();
     }
 
@@ -64,6 +66,14 @@ public class ItemCategoryMenuListViewAdapter extends BaseAdapter {
         holder.menuName.setText(singleBeen.get(position).getName());
         Log.d("ItemCategoryMenuListVie", "position:" + position);
 //        holder.menuView.setVisibility(View.VISIBLE);
+
+        if (selectIndex == position) {
+            holder.menuName.setTextColor(Color.RED);
+            holder.menuView.setVisibility(View.VISIBLE);
+        } else {
+            holder.menuName.setTextColor(Color.BLACK);
+            holder.menuView.setVisibility(View.GONE);
+        }
         return convertView;
     }
 

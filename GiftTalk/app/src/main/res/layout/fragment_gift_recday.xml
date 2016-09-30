@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dongkui.gifttalk.view.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gift_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/refresh_head" />
+    <!-- 支持所有实现Pullable接口的View -->
+    <com.dongkui.gifttalk.view.PullableScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.dongkui.gifttalk.view.CustomImageView
-            android:id="@+id/profile_cover_image"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:src="@mipmap/dk_qingxin" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.dongkui.gifttalk.view.CustomRecyclerView
-            android:id="@+id/profile_recycler_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <com.dongkui.gifttalk.view.CustomImageView
+                android:id="@+id/profile_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:src="@mipmap/dk_qingxin" />
 
-    </LinearLayout>
-</ScrollView>
+            <com.dongkui.gifttalk.view.CustomRecyclerView
+                android:id="@+id/profile_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </com.dongkui.gifttalk.view.PullableScrollView>
+
+    <include layout="@layout/load_more" />
+
+</com.dongkui.gifttalk.view.PullToRefreshLayout>

@@ -16,12 +16,13 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
+ * 分类界面右边的ListView的适配器
  */
 public class ItemCategorySingleContentListViewAdapter extends BaseAdapter {
     private Context context;
     private List<ItemCategorySingleBean.DataBean.CategoriesBean> singleBeen;
     private ItemCategorySingleContentGridViewAdapter gridViewAdapter;
-    public int position;
+    public int selectIndex;
 
     public ItemCategorySingleContentListViewAdapter(Context context) {
         this.context = context;
@@ -32,8 +33,8 @@ public class ItemCategorySingleContentListViewAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void setIndex(int position) {
-        this.position = position;
+    public void setIndex(int selectIndex) {
+        this.selectIndex = selectIndex;
         notifyDataSetChanged();
     }
 
@@ -62,20 +63,39 @@ public class ItemCategorySingleContentListViewAdapter extends BaseAdapter {
         } else {
             holder = (ListViewHolder) convertView.getTag();
         }
-        holder.topName.setText(singleBeen.get(position).getName());
-        gridViewAdapter = new ItemCategorySingleContentGridViewAdapter(context);
-        gridViewAdapter.setSingleBeen(singleBeen.get(position).getSubcategories());
-        holder.gridView.setAdapter(gridViewAdapter);
+        if (position == 0) {
+//            holder.tobLinearLayout.setVisibility(View.GONE);
+            holder.topName.setText("");
+//            holder.view1.setVisibility(View.VISIBLE);
+//            holder.view2.setVisibility(View.VISIBLE);
+            gridViewAdapter = new ItemCategorySingleContentGridViewAdapter(context);
+            gridViewAdapter.setSingleBeen(singleBeen.get(position).getSubcategories());
+            holder.gridView.setAdapter(gridViewAdapter);
+        } else if (position > 0) {
+            holder.topName.setText(singleBeen.get(position).getName());
+            gridViewAdapter = new ItemCategorySingleContentGridViewAdapter(context);
+            gridViewAdapter.setSingleBeen(singleBeen.get(position).getSubcategories());
+            holder.gridView.setAdapter(gridViewAdapter);
+
+        }
+
+
         return convertView;
     }
 
     class ListViewHolder {
         TextView topName;
         GridView gridView;
+//        View view1;
+//        View view2;
+//        LinearLayout tobLinearLayout;
 
         public ListViewHolder(View view) {
             topName = (TextView) view.findViewById(R.id.item_category_single_content_top_name);
             gridView = (CustomGridView) view.findViewById(R.id.item_category_single_content_grid_view);
+//            view1 = (View) view.findViewById(R.id.item_category_single_content_top_view1);
+//            view2 = (View) view.findViewById(R.id.item_category_single_content_top_view2);
+//            tobLinearLayout = (LinearLayout) view.findViewById(R.id.item_category_single_content_top_ll);
         }
     }
 }

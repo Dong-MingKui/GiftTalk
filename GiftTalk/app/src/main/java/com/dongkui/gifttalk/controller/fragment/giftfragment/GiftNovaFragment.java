@@ -14,6 +14,8 @@ import com.dongkui.gifttalk.model.net.OnVolleyResult;
 import com.dongkui.gifttalk.model.net.VolleyInstance;
 import com.dongkui.gifttalk.utils.ValueTools;
 import com.dongkui.gifttalk.view.CustomRecyclerView;
+import com.dongkui.gifttalk.view.MyListener;
+import com.dongkui.gifttalk.view.PullToRefreshLayout;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -21,7 +23,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
- * 榜首界面中的每日推荐
+ * 榜首界面中的新星榜
  */
 public class GiftNovaFragment extends AbsBaseFragment {
     private CustomRecyclerView recyclerView;
@@ -39,12 +41,15 @@ public class GiftNovaFragment extends AbsBaseFragment {
     @Override
     protected int setLayout() {
         return R.layout.fragment_gift_recday;
+
     }
 
     @Override
     protected void initView() {
         recyclerView = byView(R.id.profile_recycler_view);
         coverImage = byView(R.id.profile_cover_image);
+        ((PullToRefreshLayout) byView(R.id.gift_scroll_view)).setOnRefreshListener(new MyListener());
+
 
     }
 

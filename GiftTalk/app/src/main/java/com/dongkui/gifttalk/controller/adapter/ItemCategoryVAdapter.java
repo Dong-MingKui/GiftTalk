@@ -1,6 +1,7 @@
 package com.dongkui.gifttalk.controller.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
+ * 分类界面攻略的 下面三个的RecyclerView的适配器
  */
 public class ItemCategoryVAdapter extends RecyclerView.Adapter<ItemCategoryVAdapter.VViewHolder> {
 
@@ -39,7 +41,7 @@ public class ItemCategoryVAdapter extends RecyclerView.Adapter<ItemCategoryVAdap
 
     @Override
     public void onBindViewHolder(VViewHolder holder, int position) {
-        Picasso.with(context).load(datas.get(position).getCover_image_url()).into(holder.kindCoverImg);
+        Picasso.with(context).load(datas.get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.kindCoverImg);
     }
 
     @Override

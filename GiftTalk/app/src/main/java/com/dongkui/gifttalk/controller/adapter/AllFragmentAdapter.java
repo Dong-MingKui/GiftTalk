@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 所有Fragment的适配器
  */
 public class AllFragmentAdapter extends FragmentPagerAdapter {
 

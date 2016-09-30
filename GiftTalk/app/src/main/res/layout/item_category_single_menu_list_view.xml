@@ -14,18 +14,16 @@
             android:id="@+id/item_category_single_menu_view"
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:background="#e60606"
-            android:visibility="gone" />
+            android:background="#e60606" />
 
         <TextView
             android:id="@+id/item_category_single_menu_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:gravity="center"
+            android:layout_margin="10dp"
             android:text="热门搜索"
             android:textColor="@drawable/category_menu_list_view" />
-
 
     </LinearLayout>
 

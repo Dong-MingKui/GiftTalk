@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.dongkui.gifttalk.R;
 import com.dongkui.gifttalk.model.bean.ItemGiftRecyclerViewBean;
+import com.dongkui.gifttalk.utils.minterface.OnRecyclerViewItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,6 +26,11 @@ import java.util.List;
 public class ItemGiftRecyclerViewAdapter extends RecyclerView.Adapter<ItemGiftRecyclerViewAdapter.MyViewHolder> {
     private Context context;
     private List<ItemGiftRecyclerViewBean.DataBean.ItemsBean> datas;
+    private OnRecyclerViewItemClickListener<String> onRecyclerViewItemClickListener;
+
+    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener<String> onRecyclerViewItemClickListener) {
+        this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
+    }
 
     public ItemGiftRecyclerViewAdapter(Context context) {
         this.context = context;
@@ -43,20 +49,29 @@ public class ItemGiftRecyclerViewAdapter extends RecyclerView.Adapter<ItemGiftRe
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
 //        if (datas.get(position).getCategory_id() != 0) {
 //            holder.orderLl.setVisibility(View.GONE);
-            Picasso.with(context).load(datas.get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.coverImageUrl);
-            holder.shortDescriptionTv.setText(datas.get(position).getShort_description());
-            holder.nameTv.setText(datas.get(position).getName());
-            holder.priceTv.setText(datas.get(position).getPrice());
+        Picasso.with(context).load(datas.get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.coverImageUrl);
+        holder.shortDescriptionTv.setText(datas.get(position).getShort_description());
+        holder.nameTv.setText(datas.get(position).getName());
+        holder.priceTv.setText(datas.get(position).getPrice());
 //        } else {
-            holder.orderTv.setText(datas.get(position).getOrder() + "");
+        holder.orderTv.setText(datas.get(position).getOrder() + "");
 //            Picasso.with(context).load(datas.get(position).getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.coverImageUrl);
 //            holder.shortDescriptionTv.setText(datas.get(position).getShort_description());
 //            holder.nameTv.setText(datas.get(position).getName());
 //            holder.priceTv.setText(datas.get(position).getPrice());
 //        }
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               int position = holder.getLayoutPosition();
+               String string = datas.get(position).getCover_webp_url();
+               onRecyclerViewItemClickListener.OnRecyclerViewItemClick(position, string);
+           }
+       });
+
 
     }
 

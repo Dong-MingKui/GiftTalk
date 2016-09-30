@@ -17,6 +17,8 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
+ * 分类界面右边ListView内的GridView的适配器
+ *
  */
 public class ItemCategorySingleContentGridViewAdapter extends BaseAdapter {
     private Context context;

@@ -16,9 +16,21 @@ public final class ValueTools {
      */
     public static final int ROTATETIME = 2000;
     /**
+     * 首页PopWindow数据接口
+     */
+    public static final String HOMEMENURV = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=2";
+
+    /**
      * 首页轮播图接口
      */
     public static final String ROTATEPICTUREURL = "http://api.liwushuo.com/v2/banners";
+    /**
+     * 首页轮播图拼接的网址
+     */
+    public static final String HOME_ROTATE_CONTENT_HEAD = "http://api.liwushuo.com/v2/collections/";
+    public static final String HOME_ROTATE_CONTENT_FOOT = "/posts?gender=1&generation=2&limit=20&offset=0";
+    public static final String HOME_ROTATE_CONTENT_POST = "http://api.liwushuo.com/v2/posts_v2/";
+    public static final String HOME_ROTATE_CONTENT_URL = "http://api.liwushuo.com/v2/url/";
     /**
      * 首页横向的RecyclerView图片接口
      */

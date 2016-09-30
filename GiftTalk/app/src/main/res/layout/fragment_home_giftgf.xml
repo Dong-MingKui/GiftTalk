@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dongkui.gifttalk.view.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_gift_list_view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
+    <include layout="@layout/refresh_head" />
+    <!-- 支持所有实现Pullable接口的View -->
+
+    <com.dongkui.gifttalk.view.PullableListView
         android:id="@+id/home_gift_GF_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#e9e9e9"
         android:dividerHeight="5dp" />
 
-</LinearLayout>
+    <include layout="@layout/load_more" />
+</com.dongkui.gifttalk.view.PullToRefreshLayout>

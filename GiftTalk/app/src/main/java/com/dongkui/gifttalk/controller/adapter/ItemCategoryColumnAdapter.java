@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
+ * 分类界面栏目的适配器
  */
 public class ItemCategoryColumnAdapter extends RecyclerView.Adapter<ItemCategoryColumnAdapter.ColumnViewHolder> {
 

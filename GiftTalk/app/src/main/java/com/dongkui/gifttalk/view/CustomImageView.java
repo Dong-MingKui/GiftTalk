@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 /**
  * Created by dllo on 16/9/21.
+ * 自定义的ImageView
  */
 public class CustomImageView extends ImageView {
 

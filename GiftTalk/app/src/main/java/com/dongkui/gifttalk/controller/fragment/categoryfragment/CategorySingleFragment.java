@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/21.
+ * 分类界面的单品
  */
 public class CategorySingleFragment extends AbsBaseFragment {
     private ListView menuListView;
@@ -59,8 +60,6 @@ public class CategorySingleFragment extends AbsBaseFragment {
                 // 把下标传过去, 然后刷新adapter
 //                menuListViewAdapter.setIndex(position);
                 // 当点击到某个item的时候让这个item自动滑动到ListView的顶部(下面item够多,如果点击的是最后一行就不能到达顶部了)
-//                menuListView.smoothScrollToPositionFromTop(position, 0);
-//                menuListView.setSelected(true);
                 contentListViewAdapter.setIndex(selectIndex);
                 contentListView.smoothScrollToPositionFromTop(selectIndex, 0);
                 Log.d("CategorySingleFragment", "position:" + position);

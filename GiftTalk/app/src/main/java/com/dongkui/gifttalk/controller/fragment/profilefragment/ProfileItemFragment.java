@@ -5,6 +5,8 @@ import com.dongkui.gifttalk.controller.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/18.
+ * 我界面的单品
+ *
  */
 public class ProfileItemFragment extends AbsBaseFragment {
     @Override

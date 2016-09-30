@@ -16,15 +16,18 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/23.
+ * 首页轮播图的适配器(自己添加数据的适配器)
  */
 public class ItemHomeRotateAdapter extends PagerAdapter {
     private List<ItemHomeRotateBean> datas;
     private LayoutInflater inflater;
+    private Context context;
 
 
     public ItemHomeRotateAdapter(List<ItemHomeRotateBean> datas, Context context) {
         this.datas = datas;
-        inflater = LayoutInflater.from(MyApp.getContext());
+        this.context = context;
+        inflater = LayoutInflater.from(context);
     }
 
     public void setDatas(List<ItemHomeRotateBean> datas) {

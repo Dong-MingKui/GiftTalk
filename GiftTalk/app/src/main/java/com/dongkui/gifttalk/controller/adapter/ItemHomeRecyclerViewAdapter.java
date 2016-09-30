@@ -10,24 +10,31 @@ import android.widget.ImageView;
 
 import com.dongkui.gifttalk.R;
 import com.dongkui.gifttalk.model.bean.ItemHomeRecyclerViewBean;
+import com.dongkui.gifttalk.utils.minterface.OnRecyclerViewItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.\
+ * 首页横向滑动的RecyclerView适配器
  */
 public class ItemHomeRecyclerViewAdapter extends RecyclerView.Adapter<ItemHomeRecyclerViewAdapter.HomeViewHolder> {
     private Context context;
-    private List<ItemHomeRecyclerViewBean> datas;
+    private List<ItemHomeRecyclerViewBean.DataBean.SecondaryBannersBean> datas;
+    private OnRecyclerViewItemClickListener<String> onRecyclerViewItemClickListener;
 
     public ItemHomeRecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<ItemHomeRecyclerViewBean> datas) {
+    public void setDatas(List<ItemHomeRecyclerViewBean.DataBean.SecondaryBannersBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
+    }
+
+    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener<String> onRecyclerViewItemClickListener) {
+        this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
     }
 
     @Override
@@ -37,9 +44,20 @@ public class ItemHomeRecyclerViewAdapter extends RecyclerView.Adapter<ItemHomeRe
         return holder;
     }
 
+
     @Override
-    public void onBindViewHolder(HomeViewHolder holder, int position) {
-        Picasso.with(context).load(datas.get(position).getData().getSecondary_banners().get(position).getImage_url()).config(Bitmap.Config.RGB_565).into(holder.img);
+    public void onBindViewHolder(final HomeViewHolder holder, int position) {
+
+        Picasso.with(context).load(datas.get(position).getImage_url()).config(Bitmap.Config.RGB_565).into(holder.img);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getLayoutPosition();
+                String bean = datas.get(position).getImage_url();
+                onRecyclerViewItemClickListener.OnRecyclerViewItemClick(position, bean);
+            }
+        });
+
     }
 
     @Override

@@ -51,6 +51,8 @@ public class GiftFragment extends AbsBaseFragment {
 
         adapter.setFragments(fragments);
         giftVp.setAdapter(adapter);
+        // 懒加载
+        giftVp.setOffscreenPageLimit(4);
         giftTab.setupWithViewPager(giftVp);
         String[] title = {"每日推荐", "TOP100", "独立原创榜", "新星榜"};
         for (int i = 0; i < 4; i++) {
